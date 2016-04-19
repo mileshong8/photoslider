@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="jQuery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src="SliderV2.js"></script>
+    <link type="text/css" rel="stylesheet" href="SliderV2.css"/>
+    <script src='spectrum.js'></script>
+    <link rel='stylesheet' href='spectrum.css' />
+    <title>Photo Slider</title>
+</head>
+<body>
+
+
+<div id="submitphotoarea">
+    Add Your Photo Here:
+    <input title="Input your image URL and click submit" type="text" id="userurl">
+    <button id="submitbutton" type="button" class="btn btn-default">submit</button>
+</div>
+
+
+
+
+<div class="dropdown" id="menu">
+    <button id="settings" class="btn btn-primary dropdown-toggle mydropdownmenu" type="button" data-toggle="dropdown">Settings
+        <span class="caret"></span></button>
+    <ul class="dropdown-menu mydropdownmenu">
+        <li><button class="menubutton" id="photopg">Photo Slider</button></li>
+        <li><button class="menubutton" id="generalpg">General</button></li>
+        <li><button class="menubutton"><a href="https://twitter.com/starwars?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Star Wars Twitter</a></button></li>
+    </ul>
+</div>
+
+<div id="generalarea">
+    <h3>Set Background: </h3>
+    <button class="backimg"><img id="hoth" src="http://img.lum.dolimg.com/v1/images/Hoth_d074d307.jpeg?region=0%2C0%2C1200%2C675&width=768" class="img-thumbnail"></button>
+    <button class="backimg"><img id="tant" src="http://img.lum.dolimg.com/v1/images/open-uri20150608-27674-obj7u0_7c60f729.jpeg?region=0%2C0%2C1200%2C513" class="img-thumbnail"></button>
+    <button class="backimg"><img id="endo" src="http://bi9he1w7hz8qbnm2zl0hd171.wpengine.netdna-cdn.com/wp-content/uploads/2015/04/Star-Wars-Battlefront.jpg" class="img-thumbnail"></button>
+    <h3>Choose Page Colors: </h3>
+    Border Color:
+    <input type='text' class='basic' id="bordercolor"/>
+    <br>
+    Dot Color:
+    <input type='text' class='basic' id="dotcolor"/>
+    <br>
+    <script>
+        $('#bordercolor').spectrum({
+            color: 'salmon',
+            showAlpha: true,showInput: true,
+
+            move: function(color){
+                $('#border').css('border-color',color.toRgbString());
+                $('#border').val(color.toRgbString());
+            }
+        });
+        $("#dotcolor").spectrum({
+            color: "salmon",
+            showAlpha: true,showInput: true,
+
+            move: function(color){
+                $(".dotprop").css("background-color",color.toRgbString());
+                $(".dotprop").val(color.toRgbString());
+            }
+        })
+    </script>
+    <h3>Slide Time:</h3>
+    <select id="slidetimes">
+        <option>Normal</option>
+        <option>Fast</option>
+        <option>Slow</option>
+    </select>
+
+</div>
+<div id="border">
+    <table align="center">
+        <tr align="center">
+            <audio autoplay loop id="cantinasong">
+                <source src="src/Audio/cantina.mp3" type="audio/mpeg">
+            </audio>
+            <img id="pause" src="src/img/pausebutton.png"/>
+            <img id="play" src="src/img/playbutton.svg"/>
+        </tr>
+        <tr>
+            <td class="buttoncolumn" align="right">
+                <div id="leftbuttoncolumn">
+                    <img id="leftbutton" class="navbutton" src="src/img/nextbuttoncircle.png"/>
+                </div>
+
+            </td>
+            <td align="center">
+
+                <img id="image1" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2000px-Star_Wars_Logo.svg.png"/>
+
+                <div id="dots">
+
+                </div>
+
+            </td>
+            <td class="buttoncolumn" align="left">
+                <div id="rightbuttoncolumn">
+                    <img id="rightbutton" class="navbutton" src="src/img/nextbuttoncircle.png"/>
+                </div>
+
+            </td>
+
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

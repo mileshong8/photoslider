@@ -1,0 +1,27 @@
+#rightbutton {
+
+}
+
+#leftbutton {
+    float: left;
+}
+
+
+button {
+    height: 75px;
+    width: 125px;
+    display: inline;
+}
+
+#image {
+
+}
+
+img {
+    border: solid black;
+    height: 650px;
+    width: 450px;
+    display: inline;
+    position: absolute;
+    align: center;
+}
