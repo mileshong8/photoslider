@@ -15,6 +15,14 @@ $(document).ready(function() {
         playSlideshow();
     });
 
+    $(document).keydown(function(event) {
+        if(event.which === 39){
+            slideImgRight();
+        }
+        //resetSlideshow();
+        playSlideshow();
+    });
+
     // left button click bind
     $("#leftbutton").click(function() {
         slideImgLeft();
