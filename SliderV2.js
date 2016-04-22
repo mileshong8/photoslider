@@ -23,6 +23,12 @@ $(document).ready(function() {
         playSlideshow();
     });
 
+    $(document).keydown(function(event) {
+        if(event.which === 37){
+            slideImgLeft();
+            pauseSlideshow();
+    }});
+
     // left button click bind
     $("#leftbutton").click(function() {
         slideImgLeft();
