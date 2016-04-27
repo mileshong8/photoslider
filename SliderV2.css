@@ -110,3 +110,17 @@ table {
     width: 15%;
     height: 100px;
 }
+
+#fsbutton {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    top: 2px;
+}
+#fsback {
+    position: relative;
+    height: 30px;
+    width: 30px;
+    background: darkgrey;
+    bottom: 10px;
+}

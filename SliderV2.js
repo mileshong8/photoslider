@@ -29,6 +29,12 @@ $(document).ready(function() {
         pauseSlideshow();
 
     });
+    $(document).keydown(function(event) {
+        if (event.which === 37) {
+            slideImgLeft();
+            pauseSlideshow();
+        }
+    });
     // submit button bind
     $("#submitbutton").click(function() {
         addurl();
