@@ -110,17 +110,15 @@ table {
     width: 15%;
     height: 100px;
 }
+.darkbackground{
+    height:100%;
+    width: 100%;
+    color: #111111;
+}
 
-#fsbutton {
-    position: relative;
-    height: 20px;
-    width: 20px;
-    top: 2px;
+#fsbutton{
+    z-index:1;
+    bottom: 100px
 }
-#fsback {
-    position: relative;
-    height: 30px;
-    width: 30px;
-    background: darkgrey;
-    bottom: 10px;
-}
+
+

@@ -64,6 +64,22 @@ $(document).ready(function() {
 
     menunav();
 
+
+    $("#fsbutton").click(function() {
+        $("#image1").css({"height":900,"width":800,"z-index":2});
+        document.getElementById("border").style.backgroundImage = "url(/photoslider/src/img/DarkHoth.jpg)";
+    });
+
+    $('#fsbutton2').click(function(){
+        $("#image1").css({'height': 515,
+        'width':450,
+        'margin-top': '1%',
+        'margin-bottom': '3%;'});
+        document.getElementById("border").style.backgroundImage = "url(http://img.lum.dolimg.com/v1/images/Hoth_d074d307.jpeg?region=0%2C0%2C1200%2C675&width=768)";
+
+    })
+
+
 });
 
 
@@ -204,11 +220,15 @@ function menunav() {
         $("#generalarea").show();
         pauseSlideshow();
     });
-    $("#photopg").click(function() {
+    $("#photopg").click(function () {
         $("#generalarea").hide();
         $("#submitphotoarea").show();
         $("#border").show();
         playSlideshow();
     });
 
+
 }
+
+
+
