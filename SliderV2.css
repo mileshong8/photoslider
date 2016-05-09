@@ -118,7 +118,12 @@ table {
 
 #fsbutton{
     z-index:1;
-    bottom: 100px
+    bottom: 100px;
+    color: salmon
+}
+
+#fsbutton2{
+    color:salmon
 }
 
 
