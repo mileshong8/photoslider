@@ -64,6 +64,7 @@ $(document).ready(function() {
 
     menunav();
 
+    savesettings()
 
     $("#fsbutton").click(function() {
         $("#image1").css({"height":900,"width":800,"z-index":2});
@@ -230,5 +231,14 @@ function menunav() {
 
 }
 
+function savesettings() {
+    $("#savebutton").click(function () {
+        $("#generalarea").hide();
+        $("#submitphotoarea").show();
+        $("#border").show();
+        playSlideshow();
+    });
+
+}
 
 
