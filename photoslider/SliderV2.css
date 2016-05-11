@@ -1,0 +1,147 @@
+table {
+    width: 80%;
+}
+
+#border {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 5px solid salmon;
+    background-image: url(http://img.lum.dolimg.com/v1/images/Hoth_d074d307.jpeg?region=0%2C0%2C1200%2C675&width=768);
+    background-size: cover;
+
+}
+
+.dotprop {
+    background-color: salmon;
+    height: 15px;
+    width: 15px;
+    border: solid darkgray;
+    display: inline-block;
+    border-radius: 100%;
+}
+
+#image1 {
+
+    height: 515px;
+    width: 450px;
+    margin-top: 1%;
+    margin-bottom: 3%;
+
+}
+.buttoncolumn {
+    padding: 25px;
+}
+
+#userurl {
+    width: 380px;
+}
+
+#play {
+    display: inline-block;
+    margin-left: 48%;
+    width: 50px;
+    height: 50px;
+}
+#play:hover {
+    opacity: 0.8;
+}
+
+#pause {
+    display: inline-block;
+    margin-left: 48%;
+    width: 50px;
+    height: 50px;
+}
+#pause:hover {
+    opacity: 0.8;
+}
+
+#leftbutton {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+    height: 70px;
+    width: 70px;
+}
+
+#rightbutton {
+    height: 70px;
+    width: 70px;
+}
+
+.navbutton:hover {
+    opacity: 0.85;
+}
+
+#menu {
+    width: 100%;
+    height: 50px;
+    background-image: url(http://universe-beauty.com/albums/userpics/1/7/stars-and-planets-photo-img355-JPG.jpg);
+    background-size: 25%;
+}
+
+
+#settings {
+    height: 50px;
+    background-image: url(http://universe-beauty.com/albums/userpics/1/7/stars-and-planets-photo-img355-JPG.jpg);
+    background-size: cover;
+    color: white;
+    border: 1px solid salmon;
+}
+
+#deletephotobtn {
+    height: 50px;
+    background-image: url(http://universe-beauty.com/albums/userpics/1/7/stars-and-planets-photo-img355-JPG.jpg);
+    background-size: cover;
+    color: white;
+    border: 1px solid salmon;
+}
+
+.backimg {
+    width: 33%;
+    height: 20%;
+}
+
+.menubutton {
+    width: 100%;
+}
+
+.mydropdownmenu {
+    width: 20%;
+}
+
+#slidetimes {
+    width: 15%;
+    height: 100px;
+}
+
+.darkbackground{
+    height:100%;
+    width: 100%;
+    color: #111111;
+}
+
+#fsbutton{
+    z-index:1;
+    bottom: 100px;
+    color: salmon
+}
+
+#fsbutton2{
+    color:salmon
+}
+
+#savebutton{
+    padding: 0px;
+    border: none;
+    left: 45%;
+    background-color: transparent;
+    display: block;
+    margin-top: 25px;
+    position: absolute;
+
+}
