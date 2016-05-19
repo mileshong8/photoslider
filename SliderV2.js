@@ -71,7 +71,7 @@ $(document).ready(function() {
     $("#fsclick").click(function() {
         $("#image1").css({"height":900,"width":800,"z-index":2});
         document.getElementById("border").style.backgroundImage = "url(/photoslider/src/img/DarkHoth.jpg)";
-        $(".fs1").css({"left": 1055,"bottom":39});
+
         $("#fsclick").hide();
         $("#fsclick2").show()
     });
@@ -82,7 +82,7 @@ $(document).ready(function() {
         'margin-top': '1%',
         'margin-bottom': '3%;'});
         document.getElementById("border").style.backgroundImage = "url(http://img.lum.dolimg.com/v1/images/Hoth_d074d307.jpeg?region=0%2C0%2C1200%2C675&width=768)";
-        $(".fs1").css({"left": 880,"bottom":37});
+
         $("#fsclick").show();
         $("#fsclick2").hide()
 

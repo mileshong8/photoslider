@@ -148,13 +148,20 @@ table {
     height: 15px;
     margin: 10px;
     position: absolute;
-    bottom: 6%;
-    left: 64%;
+
     background: none;
     border: none;
 
 }
-#fsclick2 {
+#fsclick {
+    bottom: 6%;
+    left: 64.5%;
 
 }
+#fsclick2 {
+    bottom: 4%;
+    left: 77.5%;
+
+}
+
 
