@@ -86,7 +86,26 @@ $(document).ready(function() {
         $("#fsclick").show();
         $("#fsclick2").hide()
 
+    });
+
+    $("#image2").hide();
+
+    $("#image3").hide();
+
+    $("#leftbutton").mouseover(function(){
+        $('#image2').fadeIn()
+    });
+    $("#leftbutton").mouseout(function(){
+        $('#image2').fadeOut()
+    });
+
+    $("#rightbutton").mouseover(function(){
+        $('#image3').fadeIn()
+    });
+    $("#rightbutton").mouseout(function(){
+        $('#image3').fadeOut()
     })
+
 
 
 });
@@ -101,6 +120,8 @@ function slideImgRight() {
     setTimeout(function() {
         console.log("right button 2, pos="+pos);
         $(imageEL).attr("src", imageList[pos]);
+        $("#image2").attr("src", imageList[pos-1]);
+        $("#image3").attr("src", imageList[pos+1]);
         $(imageEL).show("slide", {direction: "right"}, "slow");
         dotNavigation();
     }, timeout);
@@ -118,6 +139,8 @@ function slideImgLeft() {
     setTimeout(function() {
         console.log("left button 2, pos="+pos);
         $(imageEL).attr("src", imageList[pos]);
+        $("#image2").attr("src", imageList[pos-1]);
+        $("#image3").attr("src", imageList[pos+1]);
         $(imageEL).show("slide", {direction: "left"}, "slow");
         dotNavigation();
     }, timeout);

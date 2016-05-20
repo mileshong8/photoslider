@@ -71,6 +71,7 @@ table {
 #rightbutton {
     height: 70px;
     width: 70px;
+    z-index:3
 }
 
 .navbutton:hover {
@@ -157,4 +158,34 @@ table {
 #fsclick2 {
 
 }
+#previousimage{
+    height: 300px;
+    width:400px;
+    -webkit-perspective: 400px;
+    margin: 50px;
+    padding: 10px;
+}
 
+
+#image2{
+    padding: 50px;
+    position: absolute;
+    -webkit-transform: rotateY(60deg);
+    height: 300px;
+    width:400px;
+    opacity:0.4;
+    bottom:125px;
+    right:900px;
+}
+
+#image3{
+    padding: 50px;
+    position: absolute;
+    -webkit-transform: rotateY(60deg);
+    height: 300px;
+    width:400px;
+    opacity:0.4;
+    bottom:125px;
+    right:150px;
+    z-index:2
+}
