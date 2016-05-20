@@ -93,6 +93,14 @@ table {
     border: 1px solid salmon;
 }
 
+#deletephotobtn {
+    height: 50px;
+    background-image: url(http://universe-beauty.com/albums/userpics/1/7/stars-and-planets-photo-img355-JPG.jpg);
+    background-size: cover;
+    color: white;
+    border: 1px solid salmon;
+}
+
 .backimg {
     width: 33%;
     height: 20%;
@@ -110,29 +118,13 @@ table {
     width: 15%;
     height: 100px;
 }
+
 .darkbackground{
     height:100%;
     width: 100%;
     color: #111111;
 }
 
-#fsbutton{
-    background: none;
-    border: none;
-    bottom: 43px;
-    left: 175px;
-    position: absolute;
-
-}
-
-#fsbutton2 {
-    background: none;
-    border: none;
-    margin-left: 20px;
-    bottom: 43px;
-    left: 175px;
-    position: absolute;
-}
 #savebutton{
     padding: 0px;
     border: none;
@@ -143,6 +135,7 @@ table {
     position: absolute;
 
 }
+
 .fs1 {
     width: 15px;
     height: 15px;
@@ -163,5 +156,3 @@ table {
     left: 77.5%;
 
 }
-
-

@@ -1,4 +1,4 @@
-var imageList = ["https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2000px-Star_Wars_Logo.svg.png", "https://upload.wikimedia.org/wikipedia/en/4/40/Star_Wars_Phantom_Menace_poster.jpg", "http://vignette3.wikia.nocookie.net/starwars/images/2/24/EPII_AotC_poster.png/revision/latest?cb=20130822173923", "http://ia.media-imdb.com/images/M/MV5BNTc4MTc3NTQ5OF5BMl5BanBnXkFtZTcwOTg0NjI4NA@@._V1_SX640_SY720_.jpg", "http://www.family-flix.com/wp-content/uploads/2015/06/star-wars-episode-4-a-new-hope.jpg", "http://moviewallpaperpics.com/wp-content/uploads/2015/04/Star-Wars-Episode-V-The-Empire-Strikes-Back-5.jpg", "https://upload.wikimedia.org/wikipedia/en/b/b2/ReturnOfTheJediPoster1983.jpg", "http://ia.media-imdb.com/images/M/MV5BOTAzODEzNDAzMl5BMl5BanBnXkFtZTgwMDU1MTgzNzE@._V1_SX640_SY720_.jpg"];
+//var imageList = ["https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2000px-Star_Wars_Logo.svg.png", "https://upload.wikimedia.org/wikipedia/en/4/40/Star_Wars_Phantom_Menace_poster.jpg", "http://vignette3.wikia.nocookie.net/starwars/images/2/24/EPII_AotC_poster.png/revision/latest?cb=20130822173923", "http://ia.media-imdb.com/images/M/MV5BNTc4MTc3NTQ5OF5BMl5BanBnXkFtZTcwOTg0NjI4NA@@._V1_SX640_SY720_.jpg", "http://www.family-flix.com/wp-content/uploads/2015/06/star-wars-episode-4-a-new-hope.jpg", "http://moviewallpaperpics.com/wp-content/uploads/2015/04/Star-Wars-Episode-V-The-Empire-Strikes-Back-5.jpg", "https://upload.wikimedia.org/wikipedia/en/b/b2/ReturnOfTheJediPoster1983.jpg", "http://ia.media-imdb.com/images/M/MV5BOTAzODEzNDAzMl5BMl5BanBnXkFtZTgwMDU1MTgzNzE@._V1_SX640_SY720_.jpg"];
 var pos = 0;
 var timeout = 500;
 var imageEL = "#image1";
@@ -6,6 +6,18 @@ var slideIntervalFast = 5000;
 var slideIntervalNorm = 7500;
 var slideIntervalSlow = 10000;
 var interval;
+var DataRef = new Firebase('https://fotoslider.firebaseio.com/');
+var dotinit = false;
+var imageList = [];
+
+DataRef.on("value", function(snapshot, prevChildKey) {
+    var snap = snapshot.val();
+    console.log(snap.imagelist);
+    imageList = snap.imagelist;
+    initdots();
+
+});
+
 
 $(document).ready(function() {
     //right button click bind
@@ -14,7 +26,6 @@ $(document).ready(function() {
         //resetSlideshow();
         playSlideshow();
     });
-
     $(document).keydown(function(event) {
         if(event.which === 39){
             slideImgRight();
@@ -27,7 +38,6 @@ $(document).ready(function() {
     $("#leftbutton").click(function() {
         slideImgLeft();
         pauseSlideshow();
-
     });
     $(document).keydown(function(event) {
         if (event.which === 37) {
@@ -46,17 +56,6 @@ $(document).ready(function() {
     $("#play").click(function() {
         playSlideshow();
     });
-    //create dots
-    for (var i = 0; i<imageList.length; i++) {
-        var dot = document.createElement("div");
-        $(dot).addClass("dotprop");
-        $(dot).attr("id", i);
-        $("#dots").append(dot);
-    }
-    dotNavigation();
-
-    //dot click bind
-    dotBind();
 
     bindBackground();
 
@@ -64,13 +63,15 @@ $(document).ready(function() {
 
     menunav();
 
+    deletePhoto();
+
     savesettings();
 
     $("#fsclick2").hide();
 
     $("#fsclick").click(function() {
         $("#image1").css({"height":900,"width":800,"z-index":2});
-        document.getElementById("border").style.backgroundImage = "url(/photoslider/src/img/DarkHoth.jpg)";
+        document.getElementById("border").style.backgroundImage = "url(http://img.lum.dolimg.com/v1/images/Hoth_d074d307.jpeg?region=0%2C0%2C1200%2C675&width=768)";
 
         $("#fsclick").hide();
         $("#fsclick2").show()
@@ -78,18 +79,37 @@ $(document).ready(function() {
 
     $("#fsclick2").click(function(){
         $("#image1").css({'height': 515,
-        'width':450,
-        'margin-top': '1%',
-        'margin-bottom': '3%;'});
+            'width':450,
+            'margin-top': '1%',
+            'margin-bottom': '3%;'});
         document.getElementById("border").style.backgroundImage = "url(http://img.lum.dolimg.com/v1/images/Hoth_d074d307.jpeg?region=0%2C0%2C1200%2C675&width=768)";
 
         $("#fsclick").show();
         $("#fsclick2").hide()
 
-    })
+    });
 
-
+    //DataRef.set(imageList);
 });
+
+
+
+function initdots() {
+    if (dotinit === false) {
+        //create dots
+        for (var i = 0; i<imageList.length; i++) {
+            var dot = document.createElement("div");
+            $(dot).addClass("dotprop");
+            $(dot).attr("id", i);
+            $("#dots").append(dot);
+        }
+        dotNavigation();
+        //dot click bind
+        dotBind();
+        listinit = true;
+    }
+    dotinit = true;
+}
 
 
 function slideImgRight() {
@@ -104,6 +124,7 @@ function slideImgRight() {
         $(imageEL).show("slide", {direction: "right"}, "slow");
         dotNavigation();
     }, timeout);
+
 
 }
 
@@ -123,12 +144,14 @@ function slideImgLeft() {
     }, timeout);
 
 
+
 }
 
 //change dot to the current position
 function dotNavigation() {
     $(".dotprop").fadeTo("fast", 0.5);
     $("#" + pos).fadeTo("fast", 1);
+
 }
 
 function dotBind() {
@@ -187,6 +210,17 @@ function addurl() {
         dotBind();
         dotNavigation();
     }
+    DataRef.update({imagelist: imageList});
+}
+
+
+function deletePhoto() {
+    $("#deletephotobtn").click(function() {
+        imageList.splice(pos);
+        $("#" + pos).remove();
+        slideImgRight();
+        DataRef.update({imagelist: imageList});
+    });
 }
 
 function clear() {
@@ -229,15 +263,14 @@ function menunav() {
         $("#generalarea").show();
         pauseSlideshow();
     });
-    $("#photopg").click(function () {
+    $("#photopg").click(function() {
         $("#generalarea").hide();
         $("#submitphotoarea").show();
         $("#border").show();
         playSlideshow();
     });
-
-
 }
+
 
 function savesettings() {
     $("#savebutton").click(function () {
@@ -248,5 +281,3 @@ function savesettings() {
     });
 
 }
-
-
