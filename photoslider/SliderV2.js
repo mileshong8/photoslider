@@ -8,7 +8,7 @@ var slideIntervalSlow = 10000;
 var interval;
 var DataRef = new Firebase('https://fotoslider.firebaseio.com/');
 var dotinit = false;
-
+var imageList = [];
 
 DataRef.on("value", function(snapshot, prevChildKey) {
     var snap = snapshot.val();
@@ -63,23 +63,33 @@ $(document).ready(function() {
 
     menunav();
 
-    deletephoto();
+    deletePhoto();
 
     savesettings();
 
-    $("#fsbutton").click(function() {
+    $("#fsclick2").hide();
+
+    $("#fsclick").click(function() {
         $("#image1").css({"height":900,"width":800,"z-index":2});
-        document.getElementById("border").style.backgroundImage = "url(/photoslider/src/img/DarkHoth.jpg)";
+        document.getElementById("border").style.backgroundImage = "url(http://img.lum.dolimg.com/v1/images/Hoth_d074d307.jpeg?region=0%2C0%2C1200%2C675&width=768)";
+
+        $("#fsclick").hide();
+        $("#fsclick2").show()
     });
 
-    $('#fsbutton2').click(function(){
+    $("#fsclick2").click(function(){
         $("#image1").css({'height': 515,
             'width':450,
             'margin-top': '1%',
             'margin-bottom': '3%;'});
         document.getElementById("border").style.backgroundImage = "url(http://img.lum.dolimg.com/v1/images/Hoth_d074d307.jpeg?region=0%2C0%2C1200%2C675&width=768)";
 
-    })
+        $("#fsclick").show();
+        $("#fsclick2").hide()
+
+    });
+
+    //DataRef.set(imageList);
 });
 
 
@@ -200,17 +210,17 @@ function addurl() {
         dotBind();
         dotNavigation();
     }
+    DataRef.update({imagelist: imageList});
+}
 
 
-    //DataRef.update({imagelist: imageList});
-    /*
-    DataRef.on("child_added", function(snapshot, prevChildKey) {
-        var newPost = snapshot.val();
-        imageList = newPost.imagelist
+function deletePhoto() {
+    $("#deletephotobtn").click(function() {
+        imageList.splice(pos);
+        $("#" + pos).remove();
+        slideImgRight();
+        DataRef.update({imagelist: imageList});
     });
-    */
-
-
 }
 
 function clear() {
@@ -261,13 +271,6 @@ function menunav() {
     });
 }
 
-function deletephoto() {
-    $("#deletephotobtn").click(function() {
-        imageList.remove(pos);
-        pos = imageList.length - 1;
-    });
-    //DataRef.update({imagelist: imageList});
-}
 
 function savesettings() {
     $("#savebutton").click(function () {

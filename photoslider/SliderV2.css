@@ -125,16 +125,6 @@ table {
     color: #111111;
 }
 
-#fsbutton{
-    z-index:1;
-    bottom: 100px;
-    color: salmon
-}
-
-#fsbutton2{
-    color:salmon
-}
-
 #savebutton{
     padding: 0px;
     border: none;
@@ -143,5 +133,26 @@ table {
     display: block;
     margin-top: 25px;
     position: absolute;
+
+}
+
+.fs1 {
+    width: 15px;
+    height: 15px;
+    margin: 10px;
+    position: absolute;
+
+    background: none;
+    border: none;
+
+}
+#fsclick {
+    bottom: 6%;
+    left: 64.5%;
+
+}
+#fsclick2 {
+    bottom: 4%;
+    left: 77.5%;
 
 }
