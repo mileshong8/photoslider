@@ -34,11 +34,58 @@
     <ul class="dropdown-menu mydropdownmenu">
         <li><button class="menubutton" id="photopg">Photo Slider</button></li>
         <li><button class="menubutton" id="generalpg">General</button></li>
+        <li><button class="menubutton">Create Your Own</button></li>
         <li><button class="menubutton"><a href="https://twitter.com/starwars?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Star Wars Twitter</a></button></li>
     </ul>
     <button id="deletephotobtn" class="btn btn-default">Delete Photo</button>
-</div>
+    <div id="spacer"></div>
+    <button id="customize">Create Your Own</button>
 
+</div>
+<div id="custommenu">
+    <h3>Set Background: </h3>
+    Add Your Background Here:
+    <input title="Input your image URL and click submit" type="text" id="backgroundurl">
+    <button id="backgroundsubmit" type="button" class="btn btn-default">submit</button>
+    <h3>Choose Page Colors: </h3>
+    Border Color:
+    <input type='text' class='basic' id="bordercolor2"/>
+    <h3>Choose Your Images</h3>
+    <input title="Add in your images and click submit for each one" type="text">
+    <button id="imgsubmit1">Submit</button>
+    <br>
+    Dot Color:
+    <input type='text' class='basic' id="dotcolor2"/>
+    <br>
+    <script>
+        $('#bordercolor2').spectrum({
+            color: 'salmon',
+            showAlpha: true,showInput: true,
+
+            move: function(color){
+                $('#border2').css('border-color',color.toRgbString());
+                $('#border2').val(color.toRgbString());
+            }
+        });
+        $("#dotcolor2").spectrum({
+            color: "salmon",
+            showAlpha: true,showInput: true,
+
+            move: function(color){
+                $(".dotprop2").css("background-color",color.toRgbString());
+                $(".dotprop2").val(color.toRgbString());
+            }
+        })
+    </script>
+    <h3>Slide Time:</h3>
+    <select id="slidetimes2">
+        <option>Normal</option>
+        <option>Fast</option>
+        <option>Slow</option>
+    </select>
+    <button class="savebutton" type="button"><img src="https://support.enjin.com/hc/en-us/article_attachments/200064634/Save_changes_button.png"></button>
+
+</div>
 <div id="generalarea">
     <h3>Set Background: </h3>
     <button class="backimg"><img id="hoth" src="http://img.lum.dolimg.com/v1/images/Hoth_d074d307.jpeg?region=0%2C0%2C1200%2C675&width=768" class="img-thumbnail"></button>
@@ -77,7 +124,7 @@
         <option>Fast</option>
         <option>Slow</option>
     </select>
-    <button id="savebutton" type="button"><img src="https://support.enjin.com/hc/en-us/article_attachments/200064634/Save_changes_button.png"></button>
+    <button class="savebutton" type="button"><img src="https://support.enjin.com/hc/en-us/article_attachments/200064634/Save_changes_button.png"></button>
 
 </div>
 <div id="border">

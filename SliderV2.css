@@ -125,7 +125,7 @@ table {
     color: #111111;
 }
 
-#savebutton{
+.savebutton{
     padding: 0px;
     border: none;
     left: 45%;
@@ -155,4 +155,21 @@ table {
     bottom: 4%;
     left: 77.5%;
 
+}
+#customize {
+    height: 50px;
+    background-image: url(http://universe-beauty.com/albums/userpics/1/7/stars-and-planets-photo-img355-JPG.jpg);
+    background-size: cover;
+    color: white;
+    border: 1px solid salmon;
+    float: right;
+    border-radius: 7%;
+}
+#spacer {
+    height: 50px;
+    width: 30px;
+    color: transparent;
+    border: none;
+    float: right;
+    background-image: url(http://universe-beauty.com/albums/userpics/1/7/stars-and-planets-photo-img355-JPG.jpg);
 }

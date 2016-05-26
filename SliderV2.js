@@ -67,6 +67,15 @@ $(document).ready(function() {
 
     savesettings();
 
+    createyourown();
+
+    $("#backgroundsubmit").click(function() {
+        addbackgroundurl();
+        pauseSlideshow();
+    });
+
+    $("#custommenu").hide();
+
     $("#fsclick2").hide();
 
     $("#fsclick").click(function() {
@@ -88,6 +97,7 @@ $(document).ready(function() {
         $("#fsclick2").hide()
 
     });
+
 
     //DataRef.set(imageList);
 });
@@ -261,23 +271,36 @@ function menunav() {
         $("#border").hide();
         $("#submitphotoarea").hide();
         $("#generalarea").show();
+        $("#custommenu").hide();
         pauseSlideshow();
     });
     $("#photopg").click(function() {
         $("#generalarea").hide();
         $("#submitphotoarea").show();
         $("#border").show();
+        $("#custommenu").hide();
         playSlideshow();
     });
 }
 
+function createyourown() {
+    $("#customize").click(function () {
+        $("#generalarea").hide();
+        $("#submitphotoarea").hide();
+        $("#border").hide();
+        $("#custommenu").show();
+        savesettings();
+        addbackgroundurl();
+    });
+}
 
 function savesettings() {
-    $("#savebutton").click(function () {
+    $(".savebutton").click(function () {
         $("#generalarea").hide();
         $("#submitphotoarea").show();
         $("#border").show();
+        $("#custommenu").hide();
         playSlideshow();
     });
-
 }
+

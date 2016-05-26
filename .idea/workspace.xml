@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4554dade-90f4-4a81-9866-b1151e905d76" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SliderV2.css" afterPath="$PROJECT_DIR$/SliderV2.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SliderV2.html" afterPath="$PROJECT_DIR$/SliderV2.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SliderV2.js" afterPath="$PROJECT_DIR$/SliderV2.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -28,8 +29,8 @@
       <file leaf-file-name="SliderV2.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SliderV2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57429045">
-              <caret line="111" column="96" selection-start-line="111" selection-start-column="96" selection-end-line="111" selection-end-column="96" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="47" column="83" selection-start-line="47" selection-start-column="83" selection-end-line="47" selection-end-column="83" />
               <folding />
             </state>
           </provider>
@@ -39,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/SliderV2.css">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="149" column="4" selection-start-line="149" selection-start-column="4" selection-end-line="149" selection-end-column="23" />
+              <caret line="127" column="1" selection-start-line="127" selection-start-column="1" selection-end-line="127" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -49,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/SliderV2.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+              <caret line="301" column="26" selection-start-line="301" selection-start-column="26" selection-end-line="301" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -96,9 +97,9 @@
         <option value="$PROJECT_DIR$/OGA.html" />
         <option value="$PROJECT_DIR$/OGA.js" />
         <option value="$USER_HOME$/Desktop/V1/PhotoSlider.html" />
+        <option value="$PROJECT_DIR$/SliderV2.css" />
         <option value="$PROJECT_DIR$/SliderV2.html" />
         <option value="$PROJECT_DIR$/SliderV2.js" />
-        <option value="$PROJECT_DIR$/SliderV2.css" />
       </list>
     </option>
   </component>
@@ -118,7 +119,7 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="56" />
+    <option name="x" value="67" />
     <option name="y" value="23" />
     <option name="width" value="1269" />
     <option name="height" value="741" />
@@ -153,7 +154,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="editor.config.accepted" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/SliderV2.css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
   </component>
@@ -238,7 +239,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="56" y="23" width="1269" height="741" extended-state="0" />
+    <frame x="67" y="23" width="1269" height="741" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -701,26 +702,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SliderV2.js">
+    <entry file="file://$PROJECT_DIR$/SliderV2.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <caret line="127" column="1" selection-start-line="127" selection-start-column="1" selection-end-line="127" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SliderV2.css">
+    <entry file="file://$PROJECT_DIR$/SliderV2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="149" column="4" selection-start-line="149" selection-start-column="4" selection-end-line="149" selection-end-column="23" />
+          <caret line="301" column="26" selection-start-line="301" selection-start-column="26" selection-end-line="301" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SliderV2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57429045">
-          <caret line="111" column="96" selection-start-line="111" selection-start-column="96" selection-end-line="111" selection-end-column="96" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="83" selection-start-line="47" selection-start-column="83" selection-end-line="47" selection-end-column="83" />
           <folding />
         </state>
       </provider>
