@@ -1,7 +1,9 @@
-//var imageList = ["https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2000px-Star_Wars_Logo.svg.png", "https://upload.wikimedia.org/wikipedia/en/4/40/Star_Wars_Phantom_Menace_poster.jpg", "http://vignette3.wikia.nocookie.net/starwars/images/2/24/EPII_AotC_poster.png/revision/latest?cb=20130822173923", "http://ia.media-imdb.com/images/M/MV5BNTc4MTc3NTQ5OF5BMl5BanBnXkFtZTcwOTg0NjI4NA@@._V1_SX640_SY720_.jpg", "http://www.family-flix.com/wp-content/uploads/2015/06/star-wars-episode-4-a-new-hope.jpg", "http://moviewallpaperpics.com/wp-content/uploads/2015/04/Star-Wars-Episode-V-The-Empire-Strikes-Back-5.jpg", "https://upload.wikimedia.org/wikipedia/en/b/b2/ReturnOfTheJediPoster1983.jpg", "http://ia.media-imdb.com/images/M/MV5BOTAzODEzNDAzMl5BMl5BanBnXkFtZTgwMDU1MTgzNzE@._V1_SX640_SY720_.jpg"];
+//var imageList = ["https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2000px-Star_Wars_Logo.svg.png", "https://upload.wikimedia.org/wikipedia/en/4/40/Star_Wars_Phantom_Menace_poster.jpg", "http://vignette3.wikia.nocookie.net/starwars/images/2/24/EPII_AotC_poster.png/revision/latest?cb=20130822173923", "http://ia.media-imdb.com/images/M/MV5BNTc4MTc3NTQ5OF5BMl5BanBnXkFtZTcwOTg0NjI4NA@@._V1_SX640_SY720_.jpg", "http://spinoff.comicbookresources.com/wp-content/uploads/2014/06/anewhopeposter.jpg", "http://vignette3.wikia.nocookie.net/starwars/images/e/e4/Empire_strikes_back_old.jpg/revision/latest?cb=20061201083417", "https://upload.wikimedia.org/wikipedia/en/b/b2/ReturnOfTheJediPoster1983.jpg", "http://ia.media-imdb.com/images/M/MV5BOTAzODEzNDAzMl5BMl5BanBnXkFtZTgwMDU1MTgzNzE@._V1_SX640_SY720_.jpg"];
 var pos = 0;
 var timeout = 500;
 var imageEL = "#image1";
+var nextimg = "#image3";
+var previousimg = "#image2";
 var slideIntervalFast = 5000;
 var slideIntervalNorm = 7500;
 var slideIntervalSlow = 10000;
@@ -10,7 +12,7 @@ var DataRef = new Firebase('https://fotoslider.firebaseio.com/');
 var dotinit = false;
 var imageList = [];
 
-DataRef.on("value", function(snapshot, prevChildKey) {
+DataRef.on("value", function(snapshot) {
     var snap = snapshot.val();
     console.log(snap.imagelist);
     imageList = snap.imagelist;
@@ -18,6 +20,8 @@ DataRef.on("value", function(snapshot, prevChildKey) {
 
 });
 
+var nextpos = 1;
+var prevpos = imageList.length - 1;
 
 $(document).ready(function() {
     //right button click bind
@@ -67,42 +71,58 @@ $(document).ready(function() {
 
     savesettings();
 
-    createyourown();
-
-    $("#backgroundsubmit").click(function() {
-        addbackgroundurl();
-        pauseSlideshow();
-    });
-
-    $("#custommenu").hide();
-
     $("#fsclick2").hide();
 
     $("#fsclick").click(function() {
-        $("#image1").css({"height":900,"width":800,"z-index":2});
-        document.getElementById("border").style.backgroundImage = "url(http://img.lum.dolimg.com/v1/images/Hoth_d074d307.jpeg?region=0%2C0%2C1200%2C675&width=768)";
-
-        $("#fsclick").hide();
-        $("#fsclick2").show()
+        gofullscreen();
     });
 
     $("#fsclick2").click(function(){
-        $("#image1").css({'height': 515,
-            'width':450,
-            'margin-top': '1%',
-            'margin-bottom': '3%;'});
-        document.getElementById("border").style.backgroundImage = "url(http://img.lum.dolimg.com/v1/images/Hoth_d074d307.jpeg?region=0%2C0%2C1200%2C675&width=768)";
+        exitfullscreen();
+    });
+    mouseoverimages();
+    //DataRef.child("imagelist").set(imageList);
 
-        $("#fsclick").show();
-        $("#fsclick2").hide()
+});
+function gofullscreen() {
+    $("#image1").css({"height":900,"width":800,"z-index":2});
+    document.getElementById("border").style.backgroundImage = "url(http://img.lum.dolimg.com/v1/images/Hoth_d074d307.jpeg?region=0%2C0%2C1200%2C675&width=768)";
 
+    $("#fsclick").hide();
+    $("#fsclick2").show()
+}
+
+function exitfullscreen() {
+    $("#image1").css({'height': 515,
+        'width':450,
+        'margin-top': '1%',
+        'margin-bottom': '3%;'});
+    document.getElementById("border").style.backgroundImage = "url(http://img.lum.dolimg.com/v1/images/Hoth_d074d307.jpeg?region=0%2C0%2C1200%2C675&width=768)";
+
+    $("#fsclick").show();
+    $("#fsclick2").hide()
+
+}
+
+function mouseoverimages() {
+    $(previousimg).hide();
+
+    $(nextimg).hide();
+
+    $("#leftbutton").mouseover(function () {
+        $(previousimg).fadeIn()
+    });
+    $("#leftbutton").mouseout(function () {
+        $(previousimg).fadeOut()
     });
 
-
-    //DataRef.set(imageList);
-});
-
-
+    $("#rightbutton").mouseover(function () {
+        $(nextimg).fadeIn()
+    });
+    $("#rightbutton").mouseout(function () {
+        $(nextimg).fadeOut()
+    });
+}
 
 function initdots() {
     if (dotinit === false) {
@@ -121,7 +141,6 @@ function initdots() {
     dotinit = true;
 }
 
-
 function slideImgRight() {
     $(imageEL).hide("slide", {direction: "left"}, "slow");
     pos+=1;
@@ -131,12 +150,40 @@ function slideImgRight() {
     setTimeout(function() {
         console.log("right button 2, pos="+pos);
         $(imageEL).attr("src", imageList[pos]);
-        $(imageEL).show("slide", {direction: "right"}, "slow");
         dotNavigation();
     }, timeout);
+    //$(imageEL).show("slide", {direction: "right"}, "slow");
+    $(imageEL).fadeIn("slow");
+    shownextimg();
+}
 
+function shownextimg() {
+    nextpos+=1;
+    prevpos += 1;
+    if (nextpos>imageList.length - 1) {
+        nextpos = 0;
+    }
+    if (prevpos>imageList.length - 1) {
+        prevpos = 0;
+    }
+    $(previousimg).attr("src", imageList[prevpos]);
+    $(nextimg).attr("src", imageList[nextpos]);
+}
+
+function showprevimg() {
+    prevpos -= 1;
+    nextpos -= 1;
+    if (prevpos < 0) {
+        prevpos = imageList.length - 1;
+    }
+    if (nextpos < 0) {
+        nextpos = imageList.length - 1;
+    }
+    $(previousimg).attr("src", imageList[prevpos]);
+    $(nextimg).attr("src", imageList[nextpos]);
 
 }
+
 
 function slideImgLeft() {
     console.log("left button 1, pos="+pos);
@@ -149,9 +196,11 @@ function slideImgLeft() {
     setTimeout(function() {
         console.log("left button 2, pos="+pos);
         $(imageEL).attr("src", imageList[pos]);
-        $(imageEL).show("slide", {direction: "left"}, "slow");
+        //$(imageEL).show("slide", {direction: "left"}, "slow");
         dotNavigation();
     }, timeout);
+    $(imageEL).fadeIn("slow");
+    showprevimg();
 
 
 
@@ -162,6 +211,7 @@ function dotNavigation() {
     $(".dotprop").fadeTo("fast", 0.5);
     $("#" + pos).fadeTo("fast", 1);
 
+
 }
 
 function dotBind() {
@@ -169,6 +219,10 @@ function dotBind() {
     $(".dotprop").click(function(e) {
         $(imageEL).fadeOut("slow");
         pos = parseInt($(e.target).attr("id"));
+        nextpos = pos + 1;
+        prevpos = pos - 1;
+        $(previousimg).attr("src", imageList[prevpos]);
+        $(nextimg).attr("src", imageList[nextpos]);
         setTimeout(function() {
             $(imageEL).attr("src", imageList[pos]);
             $(imageEL).fadeIn("slow");
@@ -176,6 +230,7 @@ function dotBind() {
         dotNavigation();
         //pauseSlideshow();
         playSlideshow();
+
     });
 }
 
@@ -208,6 +263,8 @@ function addurl() {
     else {
         imageList.push(document.getElementById("userurl").value);
         pos = imageList.length - 1;
+        nextpos = 0;
+        prevpos = imageList.length - 2;
         var dot = document.createElement("div");
         $(dot).addClass("dotprop");
         $(dot).attr("id", imageList.length - 1);
@@ -226,9 +283,13 @@ function addurl() {
 
 function deletePhoto() {
     $("#deletephotobtn").click(function() {
-        imageList.splice(pos);
-        $("#" + pos).remove();
+        imageList.splice(pos, 1);
+        $(".dotprop").remove();
+        dotinit = false;
+        initdots();
         slideImgRight();
+        shownextimg();
+        dotNavigation();
         DataRef.update({imagelist: imageList});
     });
 }
@@ -271,36 +332,23 @@ function menunav() {
         $("#border").hide();
         $("#submitphotoarea").hide();
         $("#generalarea").show();
-        $("#custommenu").hide();
         pauseSlideshow();
     });
     $("#photopg").click(function() {
         $("#generalarea").hide();
         $("#submitphotoarea").show();
         $("#border").show();
-        $("#custommenu").hide();
         playSlideshow();
     });
 }
 
-function createyourown() {
-    $("#customize").click(function () {
-        $("#generalarea").hide();
-        $("#submitphotoarea").hide();
-        $("#border").hide();
-        $("#custommenu").show();
-        savesettings();
-        addbackgroundurl();
-    });
-}
 
 function savesettings() {
-    $(".savebutton").click(function () {
+    $("#savebutton").click(function () {
         $("#generalarea").hide();
         $("#submitphotoarea").show();
         $("#border").show();
-        $("#custommenu").hide();
         playSlideshow();
     });
-}
 
+}
